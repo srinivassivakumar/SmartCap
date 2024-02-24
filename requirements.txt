@@ -1,0 +1,2 @@
+flask>=2.0.2
+pdfminer>=3.11.0

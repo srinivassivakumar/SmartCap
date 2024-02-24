@@ -1,0 +1,230 @@
+<OPEN WIRE DIAGRAM VERSION 1/>
+<UNIT Unit1>
+  <COMPONENT Arduino>
+    <X 960/>
+    <INSTANCE object Arduino: TArduinoBoard
+  Modules.Items = <
+    item
+      _ = TArduinoEEPROMModule
+    end\>
+  BoardType = 'Arduino Nano'
+  AnalogInputReference = Default
+  Serial.Items = <
+    item
+      _ = TArduinoHardwareSerial
+      InputPin.Form = __OpenWireRootUnit__
+      InputPin.SourcePins = (
+        __OpenWireRootUnit__.Packet1.OutputPin)
+    end\>
+  AnalogInput.Items = <
+    item
+      _ = TArduinoAnalogOptionalAsDigitalInputChannel
+    end
+    item
+      _ = TArduinoAnalogOptionalAsDigitalInputChannel
+    end\>
+  I2CChannels.Items = <
+    item
+      _ = TArduinoI2C
+      InputPin.Form = __OpenWireRootUnit__
+      InputPin.SourcePins = (
+        __OpenWireRootUnit__.AccelerometerGyroscope1.OutputPin)
+    end\>
+  SPIChannels.Items = <
+    item
+      _ = TArduinoSPI
+    end\>
+  Digital.Items = <
+    item
+      _ = TArduinoAdditionalDigitalSerial0Channel
+    end
+    item
+      _ = TArduinoAdditionalDigitalSerial0Channel
+    end
+    item
+      _ = TArduinoAdditionalDigitalInterruptChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMInterruptChannel
+    end
+    item
+      _ = TArduinoAdditionalDigitalChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMChannel
+    end
+    item
+      _ = TArduinoAdditionalDigitalChannel
+    end
+    item
+      _ = TArduinoAdditionalDigitalChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMChannel
+    end
+    item
+      _ = TArduinoBasicDigitalPWMSPI0Channel
+    end
+    item
+      _ = TArduinoAdditionalDigitalSPI0Channel
+    end
+    item
+      _ = TArduinoAdditionalDigitalSPI0Channel
+    end
+    item
+      _ = TArduinoCombinedAnalogDigitalChannel
+    end
+    item
+      _ = TArduinoCombinedAnalogDigitalChannel
+    end
+    item
+      _ = TArduinoCombinedAnalogDigitalChannel
+    end
+    item
+      _ = TArduinoCombinedAnalogDigitalChannel
+    end
+    item
+      _ = TArduinoCombinedAnalogDigitalI2C0Channel
+    end
+    item
+      _ = TArduinoCombinedAnalogDigitalI2C0Channel
+    end\>
+end
+/>
+    <Y 256/>
+  </COMPONENT>
+  <COMPONENT AccelerometerGyroscope1>
+    <X 256/>
+    <INSTANCE object AccelerometerGyroscope1: TArduinoMPU6050I2C
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Arduino.I2CChannels._Item0.InputPin
+      '__OpenWireRootUnit__.Arduino.I2CChannels.I2C.InputPin'))
+  Accelerometer.OutputPins.Form = __OpenWireRootUnit__
+  Accelerometer.OutputPins.Pins = (
+    Sinks
+    (
+      (
+        __OpenWireRootUnit__.AccelerationToAngle1.InputPins._Pin0
+        '__OpenWireRootUnit__.AccelerationToAngle1.InputPins.X'))
+    Sinks
+    (
+      (
+        __OpenWireRootUnit__.AccelerationToAngle1.InputPins._Pin1
+        '__OpenWireRootUnit__.AccelerationToAngle1.InputPins.Y'))
+    Sinks
+    (
+      (
+        __OpenWireRootUnit__.AccelerationToAngle1.InputPins._Pin2
+        '__OpenWireRootUnit__.AccelerationToAngle1.InputPins.Z')))
+  Accelerometer.FullScaleRange = ar2g
+  Gyroscope.FullScaleRange = gr250dps
+end
+/>
+    <Y 256/>
+  </COMPONENT>
+  <COMPONENT AccelerationToAngle1>
+    <X 480/>
+    <INSTANCE object AccelerationToAngle1: TArduinoAccelerationToAngle
+  InputPins.Form = __OpenWireRootUnit__
+  InputPins.Pins = (
+    (
+      __OpenWireRootUnit__.AccelerometerGyroscope1.Accelerometer.OutputPins._Pin0
+      
+        '__OpenWireRootUnit__.AccelerometerGyroscope1.Accelerometer.Outpu' +
+        'tPins.X')
+    (
+      __OpenWireRootUnit__.AccelerometerGyroscope1.Accelerometer.OutputPins._Pin1
+      
+        '__OpenWireRootUnit__.AccelerometerGyroscope1.Accelerometer.Outpu' +
+        'tPins.Y')
+    (
+      __OpenWireRootUnit__.AccelerometerGyroscope1.Accelerometer.OutputPins._Pin2
+      
+        '__OpenWireRootUnit__.AccelerometerGyroscope1.Accelerometer.Outpu' +
+        'tPins.Z'))
+  OutputPins.Form = __OpenWireRootUnit__
+  OutputPins.Pins = (
+    Sinks
+    (
+      (
+        __OpenWireRootUnit__.Packet1.Elements._Item0.InputPin
+        '__OpenWireRootUnit__.Packet1.Elements.Analog(Binary)1.InputPin'))
+    Sinks
+    (
+      (
+        __OpenWireRootUnit__.Packet1.Elements._Item1.InputPin
+        '__OpenWireRootUnit__.Packet1.Elements.Analog(Binary)2.InputPin'))
+    Sinks
+    (
+      (
+        __OpenWireRootUnit__.Packet1.Elements._Item2.InputPin
+        '__OpenWireRootUnit__.Packet1.Elements.Analog(Binary)3.InputPin')))
+end
+/>
+    <Y 272/>
+  </COMPONENT>
+  <COMPONENT Packet1>
+    <X 688/>
+    <INSTANCE object Packet1: TArduinoPacket
+  OutputPin.Form = __OpenWireRootUnit__
+  OutputPin.SinkPins = (
+    (
+      __OpenWireRootUnit__.Arduino.Serial._Item0.InputPin
+      '__OpenWireRootUnit__.Arduino.Serial[0].InputPin'))
+  Elements.Items = <
+    item
+      _ = TArduinoAnalogBinaryPacketElement
+      Name = 'Analog(Binary)1'
+      InputPin.Form = __OpenWireRootUnit__
+      InputPin.SourcePin = (
+        __OpenWireRootUnit__.AccelerationToAngle1.OutputPins._Pin0
+        '__OpenWireRootUnit__.AccelerationToAngle1.OutputPins.X(Roll)')
+      Visualization._D_Instrument = <
+        item
+          _ = TArduinoPacketElementFloatAngularGauge
+        end\>
+    end
+    item
+      _ = TArduinoAnalogBinaryPacketElement
+      Name = 'Analog(Binary)2'
+      InputPin.Form = __OpenWireRootUnit__
+      InputPin.SourcePin = (
+        __OpenWireRootUnit__.AccelerationToAngle1.OutputPins._Pin1
+        '__OpenWireRootUnit__.AccelerationToAngle1.OutputPins.Y(Pitch)')
+      Visualization._D_Instrument = <
+        item
+          _ = TArduinoPacketElementFloatAngularGauge
+        end\>
+    end
+    item
+      _ = TArduinoAnalogBinaryPacketElement
+      Name = 'Analog(Binary)3'
+      InputPin.Form = __OpenWireRootUnit__
+      InputPin.SourcePin = (
+        __OpenWireRootUnit__.AccelerationToAngle1.OutputPins._Pin2
+        '__OpenWireRootUnit__.AccelerationToAngle1.OutputPins.Z(Yaw)')
+      Visualization._D_Instrument = <
+        item
+          _ = TArduinoPacketElementFloatAngularGauge
+        end\>
+    end\>
+  HeadMarker.Bytes.__Serialized__ = (
+    x_Data
+    'VVU=')
+end
+/>
+    <Y 272/>
+  </COMPONENT>
+    <SELECTION Packet1/>
+    <BINDINGS object TOWPinBindingManager
+end
+/>
+</UNIT>
